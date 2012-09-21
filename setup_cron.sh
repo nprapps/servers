@@ -4,9 +4,9 @@
 # Must be executed with sudo!
 
 set -x
-exec 1> >(tee /var/log/setup-cron.log) 2>&1
+exec 1> >(tee /var/log/server-setup.log) 2>&1
 
-echo "Setup beginning."
+echo "Corn server setup beginning."
 
 # Set locale
 export LANG="en_US.UTF-8"
