@@ -1,13 +1,17 @@
 NPR Apps Servers
 ================
 
-These scripts are designed to turn a brand new Ubuntu 12.04 server image (``ami-1cdd532c`` for ``us-west-2``) into a fully functional server.
+These scripts are designed to turn a brand new Ubuntu 12.04 server image into a fully functional server.
 
-It is expected that AMIs will be taken of each server and used for routine spin-ups, but these scripts allow us to quickly modify the basic recipe. (And track changes.)
+It is expected that AMI snapshots will be taken of each server and used for routine spin-ups, but these scripts allow us to quickly modify the basic recipe. (And track changes.)
 
 Remember: **never make a baked AMI public.**
 
-You can create servers from the command line if you have installed the EC2 API tools. Install them with ``brew install ec2-api-tools``. At the end of installation a set of environment variables to be set will be printed. Be sure to add these to your ``~/.bash_profile``. You will also need to download a private key and X.509 certificate from AWS. Update the ``EC2_PRIVATE_KEY`` and ``EC2_CERT`` environment variables to point to these files.
+You can create servers from the command line if you have installed the EC2 API tools. Install them with:
+
+``brew install ec2-api-tools``
+
+At the end of the installation a set of environment variables to be set will be printed. Be sure to add these to your ``~/.bash_profile``. You will also need to download a private key and X.509 certificate from AWS. Update the ``EC2_PRIVATE_KEY`` and ``EC2_CERT`` environment variables to point to these files.
 
 Once configured you can create a new server from your command line:
 
