@@ -6,7 +6,7 @@
 set -x
 exec 1> >(tee /var/log/server-setup.log) 2>&1
 
-echo "Corn server setup beginning."
+echo "Cron server setup beginning."
 
 # Set locale
 export LANG="en_US.UTF-8"
