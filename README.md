@@ -1,7 +1,7 @@
 NPR Apps Servers
 ================
 
-These scripts are designed to turn a brand new Ubuntu 12.04 server image--``ami-1cdd532c`` for ``us-west-2`` (Oregon)--into a fully functional server.
+These scripts are designed to turn a brand new Ubuntu 12.04 server image (``ami-1cdd532c`` for ``us-west-2``) into a fully functional server.
 
 It is expected that AMIs will be taken of each server and used for routine spin-ups, but these scripts allow us to quickly modify the basic recipe. (And track changes.)
 
