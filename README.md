@@ -7,7 +7,10 @@ It is expected that AMI snapshots will be taken of each server and used for rout
 
 Remember: **never make a baked AMI public.**
 
-You can create servers from the command line if you have installed the EC2 API tools. Install them with:
+Creating servers
+----------------
+
+If creating servers with the web console isn't fast enough for you, then you can create servers from the command line with the EC2 API tools. Install them with:
 
 ``brew install ec2-api-tools``
 
@@ -18,8 +21,7 @@ Once configured you can create a new server from your command line:
 * Create server: ``ec2-run-instances ami-1cdd532c -t t1.micro --region us-west-2 --key nprapps``
 * Get server DNS name: ``ec2-describe-instances --region us-west-2 $INSTANCE_ID`` (keep running until available)
 
-Cron
-----
+### Cron
 
 Creating a new cron/basic server:
 
@@ -28,4 +30,12 @@ Creating a new cron/basic server:
 * Run setup script: ``sudo bash setup_cron.sh``
 * Type in configuration values and wait for script to complete.
 * ``rm setup_cron.sh``
+
+## Database
+
+TODO
+
+## Application
+
+TODO
 
