@@ -51,5 +51,7 @@ ln -s /etc/init.d/ssh /etc/rc3.d/S20ssh
 ln -s /etc/init.d/ssh /etc/rc4.d/S20ssh
 ln -s /etc/init.d/ssh /etc/rc5.d/S20ssh
 
-echo "Setup complete."
+echo "Setup complete. Rebooting!"
+
+reboot
 
