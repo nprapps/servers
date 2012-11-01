@@ -24,7 +24,9 @@ Once configured you can create a new server from your command line:
 
 Creating a new cron/basic server:
 
-* SSH in: ``ssh -i ~/.ssh/nprapps.pem ubuntu@$SERVER_DNS_NAME``
+* Install list of live SSH keys: ``scp ubuntu@cron-staging.nprapps.org:~/.ssh/authorized_keys -i /.ssh/nprapps.pem
+ ubuntu@$SERVER_DNS_NAME:~/.ssh/``
+* SSH in: ``ssh ubuntu@$SERVER_DNS_NAME``
 * Fetch setup script: ``wget https://raw.github.com/nprapps/servers/master/setup_cron.sh``
 * Run setup script: ``sudo bash setup_cron.sh``
 * Type in configuration values and wait for script to complete. The server will reboot.
