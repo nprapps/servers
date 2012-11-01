@@ -44,8 +44,9 @@ apt-get --yes update
 apt-get --yes upgrade
 
 # Install required packages
-apt-get install --yes git openssh-server python2.7-dev libxml2-dev libxml2 libxslt1.1 libxslt1-dev build-essential python-pip mercurial subversion virtualenvwrapper nginx
-pip install uwsgi
+apt-get install --yes git openssh-server python2.7-dev libxml2-dev libxml2 libxslt1.1 libxslt1-dev build-essential python-pip mercurial subversion ruby rubygems libopenssl-ruby1.8 virtualenvwrapper nginx
+pip install uwsgi 
+gem install scout
 
 # Make sure SSH comes up on reboot
 ln -s /etc/init.d/ssh /etc/rc2.d/S20ssh
