@@ -33,6 +33,10 @@ Creating a new cron/basic server:
 * SSH in again (see above)
 * ``rm setup_cron.sh``
 
+**TODO**
+
+Install/generate .s3cfg
+
 ## Database
 
 TODO
