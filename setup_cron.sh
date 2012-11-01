@@ -36,6 +36,7 @@ export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
 
 # Setup default hostname
 echo $HOSTNAME > /etc/hostname
+echo "127.0.0.1 $HOSTNAME" > /etc/hosts
 hostname $HOSTNAME
 
 # Install outstanding updates
