@@ -1,5 +1,15 @@
 NPR Apps Servers
-================
+=========================
+
+* [About this template](#about-servers)
+* [Creating servers](#creating-servers)
+* [Cron](#cron)
+* [Configure the project](#configure-the-project)
+* [Install requirements](#install-requirements)
+* [Deploy to EC2](#deploy-to-ec2)
+
+About Servers
+--------------
 
 These scripts are designed to turn a brand new Ubuntu 12.04 server image into a fully functional server.
 
@@ -7,7 +17,8 @@ It is expected that AMI snapshots will be taken of each server and used for rout
 
 Remember: **never make a baked AMI public.**
 
-## Creating servers
+Creating servers
+-----------------
 
 If creating servers with the web console isn't fast enough for you, then you can create servers from the command line with the EC2 API tools. Install them with:
 
@@ -20,11 +31,12 @@ Once configured you can create a new server from your command line:
 * Create server: ``ec2-run-instances ami-1cdd532c -t t1.micro --region us-west-2 --key nprapps``
 * Get server DNS name: ``ec2-describe-instances --region us-west-2 $INSTANCE_ID`` (keep running until available)
 
-## Cron
+Cron
+-----
 
 Creating a new cron/basic server:
 
-* Install list of live SSH keys: ``scp -i ~/.ssh/nprapps.pem ubuntu@cron-staging.nprapps.org:~/.ssh/authorized_keys 
+* Install list of live SSH keys: ``scp -i ~/.ssh/nprapps.pem ubuntu@cron-staging.nprapps.org:~/.ssh/authorized_keys
  ubuntu@$SERVER_DNS_NAME:~/.ssh/``
 * SSH in: ``ssh ubuntu@$SERVER_DNS_NAME``
 * Fetch setup script: ``wget https://raw.github.com/nprapps/servers/master/setup_cron.sh``
@@ -37,11 +49,40 @@ Creating a new cron/basic server:
 
 Install/generate .s3cfg
 
-## Database
+Configure the project
+---------------------
 
-TODO
+Edit ``app_config.py`` and update ``PROJECT_NAME``, ``DEPLOYED_NAME``, ``REPOSITORY_NAME`` any other relevant configuration details.
 
-## Application
+Install requirements
+--------------------
 
-TODO
+Make a virtualenv and install the project requirements:
 
+```
+cd servers
+mkvirtualenv servers
+pip install -r requirements.txt
+```
+
+Add Nginx configuration
+-----------------------
+Add your configuration file to the `nginx/sites-available/` folder. Use the `static` and `status` configurations as examples.
+
+***Do not deploy application-specific files with this app*** Application-specific files should be added via the application's `fab deploy` command.
+
+
+Deploy to EC2
+-------------
+
+Deploy your new server configurations to EC2.
+
+```
+fab <branch> <destination> deploy
+```
+
+You can also remove any deployed configurations from EC2.
+
+```
+fab <destination> shiva_the_destroyer
+```
