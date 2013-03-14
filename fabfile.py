@@ -1,6 +1,9 @@
 #!/usr/bin/env python
 
+import os
+
 from fabric.api import *
+from fabric.contrib.files import *
 
 """
 Base configuration
@@ -9,22 +12,21 @@ env.user = 'ubuntu'
 env.python = 'python2.7'
 env.forward_agent = True
 env.project_name = 'servers'
-env.repo_path = '/home/ubuntu/%(project_name)s/' % env
-
-PRODUCTION_SERVERS = ['54.245.114.14']
-STAGING_SERVERS = ['50.112.92.131']
+env.repo_path = '/home/ubuntu/%(project_name)s' % env
+env.nginx_path = '/etc/nginx'
+env.site_paths = ['sites-available', 'sites-enabled']
 
 
 @task(alias='prod')
 def production():
     env.settings = 'production'
-    env.hosts = PRODUCTION_SERVERS
+    env.hosts = ['54.245.114.14']
 
 
 @task(alias='stg')
 def staging():
     env.settings = 'staging'
-    env.hosts = STAGING_SERVERS
+    env.hosts = ['50.112.92.131']
 
 
 @task
@@ -73,8 +75,19 @@ def checkout_latest(remote='origin'):
     run('cd %(repo_path)s; git checkout %(branch)s; git pull %(remote)s %(branch)s' % env)
 
 
-def update_nginx():
-    run('uname -r')
+def link_nginx_sites():
+    require('settings', provided_by=[production, staging])
+
+    for path, dirs, files in os.walk('nginx/sites-available'):
+        for site in files:
+            for remote_path in env.site_paths:
+                if not exists('%s/%s/%s' % (env.nginx_path, remote_path, site)):
+                    sudo('ln -s %s/%s/%s' % (env.nginx_path, remote_path, site))
+
+
+def reload_nginx():
+    require('settings', provided_by=[production, staging])
+    sudo('service nginx reload')
 
 
 @task
@@ -84,4 +97,5 @@ def deploy(remote='origin'):
 
     confirm_branch()
     checkout_latest(remote)
-    update_nginx()
+    link_nginx_sites()
+    reload_nginx()
