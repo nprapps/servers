@@ -77,12 +77,12 @@ def checkout_latest(remote='origin'):
 
 def link_nginx_sites():
     require('settings', provided_by=[production, staging])
-
-    for path, dirs, files in os.walk('nginx/sites-available'):
-        for site in files:
-            for remote_path in env.site_paths:
-                if not exists('%s/%s/%s' % (env.nginx_path, remote_path, site)):
-                    sudo('ln -s %s/%s/%s' % (env.nginx_path, remote_path, site))
+    with settings(warn_only=True):
+        for path, dirs, files in os.walk('nginx/sites-available'):
+            for site in files:
+                for remote_path in env.site_paths:
+                    if not exists('%s/%s/%s' % (env.nginx_path, remote_path, site)):
+                        sudo('ln -s %s/%s/%s' % (env.nginx_path, remote_path, site))
 
 
 def reload_nginx():
