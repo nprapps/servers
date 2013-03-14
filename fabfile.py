@@ -81,7 +81,7 @@ def link_nginx_sites():
         for path, dirs, files in os.walk('nginx/sites-available'):
             for site in files:
                 for remote_path in env.site_paths:
-                    if not exists('%s/%s/%s' % (env.nginx_path, remote_path, site)):
+                    if not exists('%s/%s/%s' % (env.nginx_path, remote_path, site), use_sudo=True):
                         sudo('ln -s %s/%s/%s' % (env.nginx_path, remote_path, site))
 
 
