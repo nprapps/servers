@@ -109,3 +109,5 @@ def shiva_the_destroyer():
 
     for remote_path in env.site_paths:
         sudo('rm -rf %s/%s/*' % (env.nginx_path, remote_path))
+
+    reload_nginx()
