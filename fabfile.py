@@ -17,7 +17,7 @@ env.nginx_path = '/etc/nginx'
 env.site_paths = ['sites-available', 'sites-enabled']
 
 
-@task(alias='prod')
+@task
 def production():
     env.settings = 'production'
     env.hosts = ['54.245.114.14']
@@ -82,7 +82,7 @@ def link_nginx_sites():
             for site in files:
                 for remote_path in env.site_paths:
                     if not exists('%s/%s/%s' % (env.nginx_path, remote_path, site), use_sudo=True):
-                        sudo('ln -s %s/nginx/%s/%s %s/%s/%s' % (
+                        sudo('ln -s %s/nginx/sites-available/%s %s/%s/%s' % (
                             env.repo_path, remote_path, site,
                             env.nginx_path, remote_path, site))
 
