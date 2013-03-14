@@ -77,6 +77,7 @@ def checkout_latest(remote='origin'):
 
 def link_nginx_sites():
     require('settings', provided_by=[production, staging])
+
     for path, dirs, files in os.walk('nginx/sites-available'):
         for site in files:
             for remote_path in env.site_paths:
@@ -84,16 +85,6 @@ def link_nginx_sites():
                     sudo('ln -s %s/nginx/sites-available/%s %s/%s/%s' % (
                         env.repo_path, site,
                         env.nginx_path, remote_path, site))
-
-
-@task
-def wipe_nginx_sites():
-    require('settings', provided_by=[production, staging])
-    for path, dirs, files in os.walk('nginx/sites-available'):
-        for site in files:
-            for remote_path in env.site_paths:
-                if exists('%s/%s/%s' % (env.nginx_path, remote_path, site), use_sudo=True):
-                    sudo('rm -rf %s/%s/%s' % (env.nginx_path, remote_path, site))
 
 
 def reload_nginx():
@@ -110,3 +101,11 @@ def deploy(remote='origin'):
     checkout_latest(remote)
     link_nginx_sites()
     reload_nginx()
+
+
+@task
+def shiva_the_destroyer():
+    require('settings', provided_by=[production, staging])
+
+    for remote_path in env.site_paths:
+        sudo('rm -rf %s/%s/*' % (env.nginx_path, remote_path))
