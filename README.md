@@ -2,10 +2,11 @@ NPR Apps Servers
 =========================
 
 * [About NPR Apps servers](#about-servers)
-* [Creating servers](#creating-servers)
-* [Cron](#cron)
 * [Configure the project](#configure-the-project)
 * [Install requirements](#install-requirements)
+* [Creating servers](#creating-servers)
+* [Cron](#cron)
+* [Add Nginx sites](#add-nginx-sites)
 * [Deploy to EC2](#deploy-to-ec2)
 
 About Servers
@@ -16,6 +17,22 @@ These scripts are designed to turn a brand new Ubuntu 12.04 server image into a 
 It is expected that AMI snapshots will be taken of each server and used for routine spin-ups, but these scripts allow us to quickly modify the basic recipe. (And track changes.)
 
 Remember: **never make a baked AMI public.**
+
+Configure the project
+---------------------
+
+Edit ``app_config.py`` and update ``PROJECT_NAME``, ``DEPLOYED_NAME``, ``REPOSITORY_NAME`` any other relevant configuration details.
+
+Install requirements
+--------------------
+
+Make a virtualenv and install the project requirements:
+
+```
+cd servers
+mkvirtualenv servers
+pip install -r requirements.txt
+```
 
 Creating servers
 -----------------
@@ -49,24 +66,8 @@ Creating a new cron/basic server:
 
 Install/generate .s3cfg
 
-Configure the project
----------------------
-
-Edit ``app_config.py`` and update ``PROJECT_NAME``, ``DEPLOYED_NAME``, ``REPOSITORY_NAME`` any other relevant configuration details.
-
-Install requirements
---------------------
-
-Make a virtualenv and install the project requirements:
-
-```
-cd servers
-mkvirtualenv servers
-pip install -r requirements.txt
-```
-
-Add Nginx configuration
------------------------
+Add Nginx sites
+----------------
 Add your configuration file to the `nginx/sites-available/` folder. Use the `static` and `status` configurations as examples.
 
 **Do not deploy application-specific files with this app.** Application-specific files should be added via the application's `fab deploy` command.
