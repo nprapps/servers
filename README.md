@@ -69,7 +69,7 @@ Add Nginx configuration
 -----------------------
 Add your configuration file to the `nginx/sites-available/` folder. Use the `static` and `status` configurations as examples.
 
-***Do not deploy application-specific files with this app*** Application-specific files should be added via the application's `fab deploy` command.
+**Do not deploy application-specific files with this app.** Application-specific files should be added via the application's `fab deploy` command.
 
 
 Deploy to EC2
