@@ -1,7 +1,7 @@
 NPR Apps Servers
 =========================
 
-* [About this template](#about-servers)
+* [About NPR Apps servers](#about-servers)
 * [Creating servers](#creating-servers)
 * [Cron](#cron)
 * [Configure the project](#configure-the-project)
