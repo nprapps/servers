@@ -82,7 +82,9 @@ def link_nginx_sites():
             for site in files:
                 for remote_path in env.site_paths:
                     if not exists('%s/%s/%s' % (env.nginx_path, remote_path, site), use_sudo=True):
-                        sudo('ln -s %s/%s/%s' % (env.nginx_path, remote_path, site))
+                        sudo('ln -s %s/nginx/%s/%s %s/%s/%s' % (
+                            env.repo_path, remote_path, site,
+                            env.nginx_path, remote_path, site))
 
 
 def reload_nginx():
