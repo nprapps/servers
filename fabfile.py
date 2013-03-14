@@ -24,7 +24,7 @@ def production():
 @task(alias='stg')
 def staging():
     env.settings = 'staging'
-    env.hosts = app_config.STAGING_SERVERS
+    env.hosts = STAGING_SERVERS
 
 
 @task
