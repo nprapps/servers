@@ -78,6 +78,12 @@ def checkout_latest(remote='origin'):
 def link_nginx_sites():
     require('settings', provided_by=[production, staging])
 
+    if exists('/etc/nginx/sites-enabled/default', use_sudo=True):
+        sudo('rm -rf /etc/nginx/sites-enabled/default')
+
+    if exists('/etc/nginx/sites-available/default', use_sudo=True):
+        sudo('rm -rf /etc/nginx/sites-available/default')
+
     for path, dirs, files in os.walk('nginx/sites-available'):
         for site in files:
             for remote_path in env.site_paths:
