@@ -20,13 +20,13 @@ env.site_paths = ['sites-available', 'sites-enabled']
 @task
 def production():
     env.settings = 'production'
-    env.hosts = ['54.245.114.14']
+    env.hosts = ['54.245.114.14', '50.112.9.120']
 
 
-@task(alias='stg')
+@task
 def staging():
     env.settings = 'staging'
-    env.hosts = ['50.112.92.131']
+    env.hosts = ['50.112.92.131', '50.112.87.147']
 
 
 @task
