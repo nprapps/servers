@@ -3,7 +3,7 @@ server {
     client_max_body_size 5M;
     root /var/www;
 
-    location /status/ {
+    location ^~ /status/ {
       stub_status on;
       access_log off;
       allow all;
