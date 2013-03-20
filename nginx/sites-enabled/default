@@ -1,0 +1,7 @@
+server {
+    listen 80;
+    client_max_body_size 15M;
+    root /var/www;
+    server_name $hostname "";
+    include /etc/nginx/locations-enabled/*;
+}

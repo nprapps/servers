@@ -79,11 +79,7 @@ Deploy to EC2
 Deploy your new server configurations to EC2.
 
 ```
-fab <branch> <destination> deploy
+fab <destination> deploy
 ```
 
-You can also remove any deployed configurations from EC2.
-
-```
-fab <destination> shiva_the_destroyer
-```
+The configurations are deployed with rsync, which means that you don't need to specify a branch. Whichever branch you are working in locally will be deployed to the server.

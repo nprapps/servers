@@ -1,0 +1,5 @@
+location ^~ /status/ {
+    stub_status on;
+    access_log off;
+    allow all;
+}

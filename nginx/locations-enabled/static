@@ -1,0 +1,3 @@
+location ^~ /uploads/ {
+    alias /var/www/uploads/;
+}
