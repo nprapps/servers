@@ -44,7 +44,7 @@ apt-get --yes update
 apt-get --yes upgrade
 
 # Install required packages
-apt-get install --yes git openssh-server python2.7-dev libxml2-dev libxml2 libxslt1.1 libxslt1-dev build-essential python-pip mercurial subversion ruby rubygems libopenssl-ruby1.8 virtualenvwrapper nginx s3cmd
+apt-get install --yes git openssh-server python2.7-dev libxml2-dev libxml2 libxslt1.1 libxslt1-dev build-essential python-pip mercurial subversion ruby rubygems libopenssl-ruby1.8 virtualenvwrapper nginx s3cmd npm
 pip install uwsgi 
 gem install scout
 

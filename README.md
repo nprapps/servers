@@ -18,11 +18,6 @@ It is expected that AMI snapshots will be taken of each server and used for rout
 
 Remember: **never make a baked AMI public.**
 
-Configure the project
----------------------
-
-Edit ``app_config.py`` and update ``PROJECT_NAME``, ``DEPLOYED_NAME``, ``REPOSITORY_NAME`` any other relevant configuration details.
-
 Install requirements
 --------------------
 
@@ -68,6 +63,7 @@ Install/generate .s3cfg
 
 Add Nginx sites
 ----------------
+
 Add your configuration file to the `nginx/sites-available/` folder. Use the `static` and `status` configurations as examples.
 
 **Do not deploy application-specific files with this app.** Application-specific files should be added via the application's `fab deploy` command.
