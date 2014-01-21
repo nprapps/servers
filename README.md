@@ -1,8 +1,7 @@
-NPR Apps Servers
+NPR Visuals Servers
 =========================
 
-* [About NPR Apps servers](#about-servers)
-* [Configure the project](#configure-the-project)
+* [About servers](#about-servers)
 * [Install requirements](#install-requirements)
 * [Creating servers](#creating-servers)
 * [Cron](#cron)
@@ -11,6 +10,8 @@ NPR Apps Servers
 
 About Servers
 --------------
+
+**Note:** If you're looking for a list of our servers, see our [Server Census](https://docs.google.com/spreadsheet/ccc?key=0AjWpFWKpoFHqdFl2cGxaVklCR1dPUnBGZkFTTVZQZUE&usp=drive_web#gid=0).
 
 These scripts are designed to turn a brand new Ubuntu 12.04 server image into a fully functional server.
 
