@@ -48,16 +48,19 @@ apt-get --yes update
 apt-get --yes upgrade
 
 # Install required packages
-apt-get install --yes git openssh-server python2.7-dev libxml2-dev libxml2 libxslt1.1 libxslt1-dev build-essential python-pip mercurial subversion ruby rubygems libopenssl-ruby1.8 virtualenvwrapper nginx s3cmd npm
+apt-get install --yes git openssh-server python2.7-dev libxml2-dev libxml2 libxslt1.1 libxslt1-dev build-essential python-pip mercurial subversion ruby virtualenvwrapper nginx s3cmd npm
 pip install uwsgi 
 gem install scout
+
+# Configure scout
+scout install GhUCqhYhVGUFHkCBw6U1BFJbmH46FU38Xkk7hXim
 
 # Checkout configuration files
 git clone https://github.com/nprapps/servers.git
 
 # Install configuration files
 ln -s servers/nginx/nginx.conf /etc/nginx/nginx.conf 
-ln -s servers/nginx/sites-enabled/default /etc/nginx/sites-enabled/efault 
+ln -s servers/nginx/sites-enabled/default /etc/nginx/sites-enabled/default 
 ln -s servers/nginx/locations-enabled/static /etc/nginx/locations-enabled/static
 ln -s servers/nginx/locations-enabled/status /etc/nginx/locations-enabled/status
 
