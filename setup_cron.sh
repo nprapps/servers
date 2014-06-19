@@ -11,6 +11,12 @@ echo "Server setup beginning."
 # Set locale
 export LANG="en_US.UTF-8"
 
+# Make sure SSH comes up on reboot
+ln -s /etc/init.d/ssh /etc/rc2.d/S20ssh
+ln -s /etc/init.d/ssh /etc/rc3.d/S20ssh
+ln -s /etc/init.d/ssh /etc/rc4.d/S20ssh
+ln -s /etc/init.d/ssh /etc/rc5.d/S20ssh
+
 # Prompt for variables
 echo "Enter your Amazon Access Key ID:"
 read AWS_ACCESS_KEY_ID
@@ -46,11 +52,14 @@ apt-get install --yes git openssh-server python2.7-dev libxml2-dev libxml2 libxs
 pip install uwsgi 
 gem install scout
 
-# Make sure SSH comes up on reboot
-ln -s /etc/init.d/ssh /etc/rc2.d/S20ssh
-ln -s /etc/init.d/ssh /etc/rc3.d/S20ssh
-ln -s /etc/init.d/ssh /etc/rc4.d/S20ssh
-ln -s /etc/init.d/ssh /etc/rc5.d/S20ssh
+# Checkout configuration files
+git clone https://github.com/nprapps/servers.git
+
+# Install configuration files
+ln -s servers/nginx/nginx.conf /etc/nginx/nginx.conf 
+ln -s servers/nginx/sites-enabled/default /etc/nginx/sites-enabled/efault 
+ln -s servers/nginx/locations-enabled/static /etc/nginx/locations-enabled/static
+ln -s servers/nginx/locations-enabled/status /etc/nginx/locations-enabled/status
 
 echo "Setup complete. Rebooting!"
 
