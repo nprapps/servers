@@ -46,5 +46,5 @@ Creating a new cron/basic server:
 
 **TODO**
 
-Install/generate .s3cfg
-
+* Install/generate .s3cfg
+* Configure Scout
