@@ -48,7 +48,7 @@ apt-get --yes update
 apt-get --yes upgrade
 
 # Install required packages
-apt-get install --yes git openssh-server python2.7-dev libxml2-dev libxml2 libxslt1.1 libxslt1-dev build-essential python-pip mercurial subversion ruby virtualenvwrapper nginx s3cmd npm
+apt-get install --yes git openssh-server python2.7-dev libxml2-dev libxml2 libxslt1.1 libxslt1-dev build-essential python-pip mercurial subversion ruby virtualenvwrapper nginx s3cmd npm postgresql-client libpq-dev
 pip install uwsgi 
 gem install scout
 
@@ -64,7 +64,12 @@ cp servers/nginx/sites-enabled/default /etc/nginx/sites-enabled/default
 cp servers/nginx/locations-enabled/static /etc/nginx/locations-enabled/static
 cp servers/nginx/locations-enabled/status /etc/nginx/locations-enabled/status
 
+# Remove configuration files
 rm -rf servers
+
+# Create standard directories
+mkdir /var/www
+chown ubuntu:ubuntu /var/www
 
 echo "Setup complete. Rebooting!"
 
