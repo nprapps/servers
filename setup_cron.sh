@@ -61,6 +61,8 @@ git clone https://github.com/nprapps/servers.git
 # Install configuration files
 cp servers/nginx/nginx.conf /etc/nginx/nginx.conf 
 cp servers/nginx/sites-enabled/default /etc/nginx/sites-enabled/default 
+
+mkdir /etc/nginx/locations-enabled
 cp servers/nginx/locations-enabled/static /etc/nginx/locations-enabled/static
 cp servers/nginx/locations-enabled/status /etc/nginx/locations-enabled/status
 

@@ -35,8 +35,9 @@ Configuring a server
 
 Creating a new cron/basic server:
 
-* Pull current keys for a iver server: ```scp ubuntu@cron-staging.nprapps.org:~/.ssh/authorized_keys .``
+* Pull current keys for a iver server: ``scp ubuntu@cron-staging.nprapps.org:~/.ssh/authorized_keys .``
 * Push authorized keys to the new server: ``scp -i ~/.ssh/nprapps.pem authorized_keys ubuntu@$SERVER_DNS_NAME:~/.ssh/``
+* Remove local copy of keys: ``rm authorized_keys``
 * SSH in: ``ssh ubuntu@$SERVER_DNS_NAME``
 * Fetch setup script: ``wget https://raw.github.com/nprapps/servers/master/setup_cron.sh``
 * Run setup script: ``sudo bash setup_cron.sh``
@@ -48,3 +49,4 @@ Creating a new cron/basic server:
 
 * Install/generate .s3cfg
 * Configure Scout
+* Verify the server is online (``http://$SERVER_DNS_NAME/status/``)
