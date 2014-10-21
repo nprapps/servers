@@ -35,8 +35,8 @@ Configuring a server
 
 Creating a new cron/basic server:
 
-* Install list of live SSH keys: ``scp -i ~/.ssh/nprapps.pem ubuntu@cron-staging.nprapps.org:~/.ssh/authorized_keys
- ubuntu@$SERVER_DNS_NAME:~/.ssh/``
+* Pull current keys for a iver server: ```scp ubuntu@cron-staging.nprapps.org:~/.ssh/authorized_keys .``
+* Push authorized keys to the new server: ``scp -i ~/.ssh/nprapps.pem authorized_keys ubuntu@$SERVER_DNS_NAME:~/.ssh/``
 * SSH in: ``ssh ubuntu@$SERVER_DNS_NAME``
 * Fetch setup script: ``wget https://raw.github.com/nprapps/servers/master/setup_cron.sh``
 * Run setup script: ``sudo bash setup_cron.sh``

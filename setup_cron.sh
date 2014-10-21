@@ -59,10 +59,12 @@ scout install GhUCqhYhVGUFHkCBw6U1BFJbmH46FU38Xkk7hXim
 git clone https://github.com/nprapps/servers.git
 
 # Install configuration files
-ln -s servers/nginx/nginx.conf /etc/nginx/nginx.conf 
-ln -s servers/nginx/sites-enabled/default /etc/nginx/sites-enabled/default 
-ln -s servers/nginx/locations-enabled/static /etc/nginx/locations-enabled/static
-ln -s servers/nginx/locations-enabled/status /etc/nginx/locations-enabled/status
+cp servers/nginx/nginx.conf /etc/nginx/nginx.conf 
+cp servers/nginx/sites-enabled/default /etc/nginx/sites-enabled/default 
+cp servers/nginx/locations-enabled/static /etc/nginx/locations-enabled/static
+cp servers/nginx/locations-enabled/status /etc/nginx/locations-enabled/status
+
+rm -rf servers
 
 echo "Setup complete. Rebooting!"
 
